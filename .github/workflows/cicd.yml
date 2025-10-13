@@ -10,7 +10,10 @@ permissions:
 
 jobs:
   build-and-push:
-    runs-on: ubuntu-latest
+    # Instead of ubuntu-latest, point to your self-hosted runner
+    runs-on: git-runner-scale-set-gke
+    # optionally, if you’ve given your runner custom labels, you can be more specific:
+    # runs-on: [self-hosted, linux, x64]
 
     steps:
       - name: Checkout source
@@ -20,7 +23,7 @@ jobs:
         uses: aws-actions/configure-aws-credentials@v4
         with:
           role-to-assume: arn:aws:iam::050451400373:role/Github-ECS-cicd-role
-          aws-region: ap-south-1   # e.g. us-east-1
+          aws-region: ap-south-1
 
       - name: Login to Amazon ECR
         id: login-ecr
