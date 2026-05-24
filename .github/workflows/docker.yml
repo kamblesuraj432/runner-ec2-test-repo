@@ -24,3 +24,12 @@ jobs:
         run: |
           whoami
           docker build -t suraj .
+      - name: docker continer delete
+        run: |
+          docker delete my-app
+      - name: docker create new container
+        run: |
+          docker run -d -p 5000:5000 --name my-app suraj
+    
+
+          
