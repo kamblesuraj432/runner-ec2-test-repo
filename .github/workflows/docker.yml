@@ -19,6 +19,6 @@ jobs:
           mkdir -p /home/ec2-user/pfl-appliction
           rm -rf /home/ec2-user/pfl-appliction/*
           cp -r ./* /home/ec2-user/pfl-appliction/
-          cd /home/ec2-user/pfl-application
+          cd /home/ec2-user/pfl-appliction
           ll
           yum install docker.io -y
