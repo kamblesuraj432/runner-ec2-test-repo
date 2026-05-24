@@ -22,4 +22,5 @@ jobs:
           cd /home/ec2-user/pfl-appliction
       - name: docker build image
         run: |
+          whoami
           docker build -t suraj .
