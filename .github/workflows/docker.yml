@@ -20,9 +20,6 @@ jobs:
           rm -rf /home/ec2-user/pfl-appliction/*
           cp -r ./* /home/ec2-user/pfl-appliction/
           cd /home/ec2-user/pfl-appliction
-      - name: docker install
-        run: |
-          yum install docker.io -y
       - name: docker build image
         run: |
           docker build -t suraj .
