@@ -1,16 +1,21 @@
-name: Docker Image CI
+name: Deploy Code
 
 on:
   push:
-    branches: [ "DEV" ]
+    branches:
+      - DEV  # Runs when you push to main branch
 
 jobs:
-
-  build:
-
-    runs-on: ip-172-31-40-44
+  deploy:
+    runs-on: ip-172-31-40-44   # Use your EC2 runner
 
     steps:
-    - uses: actions/checkout@v4
-    - name: Build the Docker image
-      run: docker build . --file Dockerfile --tag my-image-name:$(date +%s)
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Copy code to target path
+        run: |
+          hostname
+          mkdir -p /home/ec2-user/pfl-appliction
+          rm -rf /home/ec2-user/pfl-appliction/*
+          cp -r ./* /home/ec2-user/pfl-appliction/
